@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingService", "LoggingService\LoggingService.csproj", "{F20C4A89-68A9-443D-88C9-52609305C56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingService", "LoggingService\LoggingService.csproj", "{F20C4A89-68A9-443D-88C9-52609305C56E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadeService", "FacadeService\FacadeService.csproj", "{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageService", "MessageService\MessageService.csproj", "{33A9E47D-8377-440B-BF43-047E590DC632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F20C4A89-68A9-443D-88C9-52609305C56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F20C4A89-68A9-443D-88C9-52609305C56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F20C4A89-68A9-443D-88C9-52609305C56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A9E47D-8377-440B-BF43-047E590DC632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A9E47D-8377-440B-BF43-047E590DC632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A9E47D-8377-440B-BF43-047E590DC632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A9E47D-8377-440B-BF43-047E590DC632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
