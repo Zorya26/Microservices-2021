@@ -11,6 +11,5 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\WebUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Manager.cs" />
   </ItemGroup>
 </Project>
