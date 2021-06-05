@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Shared.Utilities;
+using Shared.Models;
 
 namespace LoggingService.Controllers
 {
@@ -16,7 +19,18 @@ namespace LoggingService.Controllers
         }
 
         [HttpGet]
-        public string GetLog() => "LogginController";
-
+        public Task<IEnumerable<string>> GetLog()
+        {
+            var utilities = new Utilities();
+            return utilities.Get();
+        }
+            
+        [HttpPost]
+        public Task Log(MessageModel msg)
+        {
+            var utilities = new Utilities();
+            _logger.LogInformation(msg.ToString());
+            return utilities.Insert(msg);
+        }
     }
 }
