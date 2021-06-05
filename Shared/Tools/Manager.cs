@@ -5,12 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Shared.Models;
 
-namespace Shared.Utilities
+namespace Shared.Tools
 {
-    public class Utilities
+    public class Manager
     {
         private readonly ConcurrentDictionary<Guid, string> _messages;
-        public Utilities()
+        public Manager()
         {
             _messages = new ConcurrentDictionary<Guid, string>();
         }

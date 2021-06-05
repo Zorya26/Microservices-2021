@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Shared.Models;
+using Shared.Utilities;
 
 namespace FacadeService.Controllers
 {
@@ -16,41 +18,32 @@ namespace FacadeService.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFacade(string applicationId)
+        public string GetFacade()
         {
-            try
-            {
-                if (string.IsNullOrEmpty(applicationId))
-                {
-                    throw new Exception("Wrong input parameters");
-                }
+            var loggingData = WebUtilities.GetRequest($"https://localhost:44389/api/Loggin");
+            var messagesData = WebUtilities.GetRequest($"https://localhost:44393/api/Message");
 
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, e.Message);
-                return StatusCode(500, e.Message);
-            }
+            var result = loggingData + messagesData;
+
+            _logger.LogInformation(result);
+
+            return result;
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostFacade(string text)
+        public string PostFacade([FromBody] string str)
         {
-            try
+            var message = new MessageModel()
             {
-                if (string.IsNullOrEmpty(text))
-                {
-                    throw new Exception("Wrong input parameters");
-                }
+                Id = Guid.NewGuid(),
+                Value = str
+            };
 
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e, e.Message);
-                return StatusCode(500, e.Message);
-            }
+            var postRequest = WebUtilities.SendPostRequest($"https://localhost:44389/api/Loggin", JsonSerializer.Serialize(message));
+
+            _logger.LogInformation(postRequest);
+
+            return postRequest;
         }
     }
 }

@@ -9,7 +9,8 @@
     <Import_RootNamespace>Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\WebUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilities\Utilities.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Manager.cs" />
   </ItemGroup>
 </Project>

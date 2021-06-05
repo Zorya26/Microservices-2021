@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using Shared.Utilities;
 using Shared.Models;
+using Shared.Tools;
 
 namespace LoggingService.Controllers
 {
@@ -12,25 +13,54 @@ namespace LoggingService.Controllers
     public class LogginController : Controller
     {
         private readonly ILogger<LogginController> _logger;
+        private readonly IMemoryCache _memoryCache;
 
-        public LogginController(ILogger<LogginController> logger)
+        Dictionary<Guid, string> messages = new Dictionary<Guid, string>();
+
+        public LogginController(ILogger<LogginController> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
+            _memoryCache = memoryCache;
         }
 
         [HttpGet]
-        public Task<IEnumerable<string>> GetLog()
+        public string GetLog()
         {
-            var utilities = new Utilities();
-            return utilities.Get();
+            var messagesCont = "";
+
+            _memoryCache.TryGetValue("messages", out messages);
+
+            foreach (var message in messages.Values)
+            {
+                messagesCont += message;
+            }
+
+            _logger.LogInformation("Request to Logging Controller");
+
+            return messagesCont;
         }
             
         [HttpPost]
-        public Task Log(MessageModel msg)
+        public string LogPost([FromBody] MessageModel message)
         {
-            var utilities = new Utilities();
-            _logger.LogInformation(msg.ToString());
-            return utilities.Insert(msg);
+            if (_memoryCache.TryGetValue("messages", out messages))
+            {
+                messages.Add(message.Id, message.Value);
+            }
+
+            else
+            {
+                messages = new Dictionary<Guid, string>
+                {
+                    { message.Id, message.Value }
+                };
+            }
+            
+            _memoryCache.Set("messages", messages);
+
+            _logger.LogInformation("Request to Logging Controller");
+
+            return "OK";
         }
     }
 }
