@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace FacadeService.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class FacadeController : Controller
     {
         private readonly ILogger<FacadeController> _logger;

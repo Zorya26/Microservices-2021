@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MessagesService.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class MessageController : Controller
     {
         private readonly ILogger<MessageController> _logger;
@@ -19,7 +19,5 @@ namespace MessagesService.Controllers
             _logger.LogInformation("Request to Message Controller");
             return "Message Controller";
         }
-            
-        
     }
 }

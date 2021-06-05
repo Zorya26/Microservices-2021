@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace LoggingService.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class LogginController : Controller
     {
         private readonly ILogger<LogginController> _logger;
