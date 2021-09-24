@@ -23,7 +23,7 @@ namespace LoggingService3.Clients
                 {
                     Addresses =
                     {
-                        "172.31.93.129:5701"
+                        "172.31.89.168:6003"
                     }
                 }
             };

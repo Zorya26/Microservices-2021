@@ -53,8 +53,8 @@ namespace FacadeService.Controllers
             var random = new Random();
             var listLoggingData = new List<string> {
                 $"https://localhost:44389/api/Loggin",
-                $"https://localhost:44389/api/Loggin",
-                $"https://localhost:44389/api/Loggin"
+                $"https://localhost:44390/api/Loggin",
+                $"https://localhost:44391/api/Loggin"
             };
             int index = random.Next(listLoggingData.Count);
             Console.WriteLine(listLoggingData[index]);
