@@ -1,4 +1,4 @@
-﻿using LoggingService.Clients;
+﻿using LoggingService1.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shared.Models;
@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LoggingService.Controllers
+namespace LoggingService1.Controllers
 {
     [Route("api/[controller]")]
     public class LogginController : Controller

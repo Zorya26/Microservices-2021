@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace LoggingService.Clients
+namespace LoggingService3.Clients
 {
     public class LoggingClient
     {
