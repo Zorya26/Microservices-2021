@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,30 +21,45 @@ namespace FacadeService.Controllers
         [HttpGet]
         public string GetFacade()
         {
-            var loggingData = WebUtilities.GetRequest($"https://localhost:44389/api/Loggin");
-            var messagesData = WebUtilities.GetRequest($"https://localhost:44393/api/Message");
+            var random = GetRandom();
 
-            var result = loggingData + messagesData;
+            var loggingData = WebUtilities.GetRequest(random);
 
-            _logger.LogInformation(result);
+            _logger.LogInformation(loggingData);
 
-            return result;
+            return loggingData;
         }
 
         [HttpPost]
         public string PostFacade([FromBody] string str)
         {
+            var random = GetRandom();
+
             var message = new MessageModel()
             {
                 Id = Guid.NewGuid(),
                 Value = str
             };
 
-            var postRequest = WebUtilities.SendPostRequest($"https://localhost:44389/api/Loggin", JsonSerializer.Serialize(message));
+            var postRequest = WebUtilities.SendPostRequest(random, JsonSerializer.Serialize(message));
 
             _logger.LogInformation(postRequest);
 
             return postRequest;
         }
+
+        private string GetRandom()
+        {
+            var random = new Random();
+            var listLoggingData = new List<string> {
+                $"https://localhost:44389/api/Loggin",
+                $"https://localhost:44389/api/Loggin",
+                $"https://localhost:44389/api/Loggin"
+            };
+            int index = random.Next(listLoggingData.Count);
+            Console.WriteLine(listLoggingData[index]);
+            return listLoggingData[index];
+        }
+
     }
 }
