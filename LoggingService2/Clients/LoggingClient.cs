@@ -23,7 +23,7 @@ namespace LoggingService2.Clients
                 {
                     Addresses =
                     {
-                        "172.31.82.133:6002"
+                        "localhost:6002"
                     }
                 }
             };
@@ -33,7 +33,7 @@ namespace LoggingService2.Clients
 
         private async Task hazelcastMap()
         {
-            _map = await _client.GetMapAsync<Guid, string>("lab4-map");
+            _map = await _client.GetMapAsync<Guid, string>("lab4-my-map");
         }
 
         public async Task<IEnumerable<string>> GetMessages()
@@ -61,7 +61,7 @@ namespace LoggingService2.Clients
             try
             {
                 await _map.SetAsync(message.Id, message.Value);
-                return "OK";
+                return message.Value;
             }
 
             catch (Exception e)
