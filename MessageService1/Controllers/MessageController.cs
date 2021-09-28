@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,6 @@ namespace MessagesService1.Controllers
         public string GetMessage()
         {
             var messagesCont = "";
-
             foreach (var message in messages.Values)
             {
                 messagesCont += message;

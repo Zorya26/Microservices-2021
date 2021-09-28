@@ -67,15 +67,15 @@ namespace FacadeService.Controllers
 
         private readonly List<string> listLoggingData = new List<string>
         {
-            $"https://localhost:44389/api/Loggin",
-            $"https://localhost:44390/api/Loggin",
-            $"https://localhost:44391/api/Loggin"
+            $"https://localhost:44394/api/Loggin",
+            $"https://localhost:44395/api/Loggin",
+            $"https://localhost:44396/api/Loggin"
         };
 
         private readonly List<string> listMessagesData = new List<string>
         {
-            $"http://localhost:44392/api/message",
-            $"http://localhost:44393/api/message"
+            $"https://localhost:44397/api/Message",
+            $"https://localhost:44398/api/Message"
         };
 
     }
