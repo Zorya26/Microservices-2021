@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingService1", "LoggingS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadeService", "FacadeService\FacadeService.csproj", "{5A7FA2F6-1334-4BA3-842B-0E108A42FCD7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageService", "MessageService\MessageService.csproj", "{33A9E47D-8377-440B-BF43-047E590DC632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageService1", "MessageService1\MessageService1.csproj", "{33A9E47D-8377-440B-BF43-047E590DC632}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Shared", "Shared\Shared.shproj", "{749FBB18-7851-4AB4-AF57-D955FF8A15AE}"
 EndProject
@@ -15,8 +15,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingService2", "LoggingS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingService3", "LoggingService3\LoggingService3.csproj", "{FF4F8F72-FD2C-4601-ADCC-62A80DF2BB5A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageService2", "MessageService2\MessageService2.csproj", "{251DF611-5038-441C-BDE0-F0919A8A4D2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueLogic", "QueueLogic\QueueLogic.csproj", "{BDB6D8C8-625E-46C2-A1E3-39CEC6128B30}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\Shared.projitems*{251df611-5038-441c-bde0-f0919a8a4d2a}*SharedItemsImports = 5
+		Shared\Shared.projitems*{33a9e47d-8377-440b-bf43-047e590dc632}*SharedItemsImports = 5
 		Shared\Shared.projitems*{5a7fa2f6-1334-4ba3-842b-0e108a42fcd7}*SharedItemsImports = 5
 		Shared\Shared.projitems*{749fbb18-7851-4ab4-af57-d955ff8a15ae}*SharedItemsImports = 13
 		Shared\Shared.projitems*{ae06516f-da70-4d29-af58-d7d0c9e42a22}*SharedItemsImports = 5
@@ -48,6 +54,14 @@ Global
 		{FF4F8F72-FD2C-4601-ADCC-62A80DF2BB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF4F8F72-FD2C-4601-ADCC-62A80DF2BB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF4F8F72-FD2C-4601-ADCC-62A80DF2BB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{251DF611-5038-441C-BDE0-F0919A8A4D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251DF611-5038-441C-BDE0-F0919A8A4D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251DF611-5038-441C-BDE0-F0919A8A4D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251DF611-5038-441C-BDE0-F0919A8A4D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDB6D8C8-625E-46C2-A1E3-39CEC6128B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDB6D8C8-625E-46C2-A1E3-39CEC6128B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDB6D8C8-625E-46C2-A1E3-39CEC6128B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDB6D8C8-625E-46C2-A1E3-39CEC6128B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

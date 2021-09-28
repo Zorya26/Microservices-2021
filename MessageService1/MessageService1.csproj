@@ -1,19 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>3162bf17-f91c-4d09-a13f-f0a54948fa5b</UserSecretsId>
+    <UserSecretsId>aa3fab48-d001-4a55-9c6b-4b28adbf6726</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
-    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hazelcast.Net" Version="4.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

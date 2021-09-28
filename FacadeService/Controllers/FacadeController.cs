@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Shared.Models;
+using QueueLogic.Models;
 using Shared.Utilities;
+//using Newtonsoft.Json;
+using QueueLogic;
 
 namespace FacadeService.Controllers
 {
@@ -12,28 +14,34 @@ namespace FacadeService.Controllers
     public class FacadeController : Controller
     {
         private readonly ILogger<FacadeController> _logger;
+        private readonly IQueueSender _queueSender;
 
-        public FacadeController(ILogger<FacadeController> logger)
+        public FacadeController(ILogger<FacadeController> logger, IQueueSender sender)
         {
             _logger = logger;
+            _queueSender = sender;
         }
 
         [HttpGet]
         public string GetFacade()
         {
-            var random = GetRandom();
+            var randomLogging = GetRandom(listLoggingData);
+            var randomMessages = GetRandom(listMessagesData);
 
-            var loggingData = WebUtilities.GetRequest(random);
+            var loggingData = WebUtilities.GetRequest(randomLogging);
+            var messagesData = WebUtilities.GetRequest(randomMessages); //messages list
 
-            _logger.LogInformation(loggingData);
+            var output = $"Logging Data: {loggingData}; Messages Data: {messagesData}";
 
-            return loggingData;
+            _logger.LogInformation(output);
+
+            return output;
         }
 
         [HttpPost]
         public string PostFacade([FromBody] string str)
         {
-            var random = GetRandom();
+            var random = GetRandom(listLoggingData);
 
             var message = new MessageModel()
             {
@@ -44,22 +52,31 @@ namespace FacadeService.Controllers
             var postRequest = WebUtilities.SendPostRequest(random, JsonSerializer.Serialize(message));
 
             _logger.LogInformation(postRequest);
+            _queueSender.SendMessage(message);
 
             return postRequest;
         }
 
-        private string GetRandom()
+        private string GetRandom(List<string> data)
         {
             var random = new Random();
-            var listLoggingData = new List<string> {
-                $"https://localhost:44389/api/Loggin",
-                $"https://localhost:44390/api/Loggin",
-                $"https://localhost:44391/api/Loggin"
-            };
-            int index = random.Next(listLoggingData.Count);
-            Console.WriteLine(listLoggingData[index]);
-            return listLoggingData[index];
+            int index = random.Next(data.Count);
+            Console.WriteLine(data[index]);
+            return data[index];
         }
+
+        private readonly List<string> listLoggingData = new List<string>
+        {
+            $"https://localhost:44389/api/Loggin",
+            $"https://localhost:44390/api/Loggin",
+            $"https://localhost:44391/api/Loggin"
+        };
+
+        private readonly List<string> listMessagesData = new List<string>
+        {
+            $"http://localhost:44392/api/message",
+            $"http://localhost:44393/api/message"
+        };
 
     }
 }

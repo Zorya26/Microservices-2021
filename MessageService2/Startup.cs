@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using QueueLogic;
 using QueueLogic.Models;
 
-namespace FacadeService
+namespace MessageService2
 {
     public class Startup
     {
@@ -25,8 +25,13 @@ namespace FacadeService
             var serviceClientSettingsConfig = Configuration.GetSection("RabbitMq");
             services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
 
-            services.AddTransient<IQueueSender, QueueSender>();
+            var serviceProvider = services.BuildServiceProvider();
+            var logger = serviceProvider.GetService<ILogger<QueueListener>>();
+            services.AddSingleton(typeof(ILogger), logger);
 
+            services.AddHostedService<QueueListener>();
+
+            services.AddMemoryCache();
             services.AddControllers();
         }
 

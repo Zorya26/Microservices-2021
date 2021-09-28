@@ -1,7 +1,7 @@
 ﻿using Hazelcast;
 using Hazelcast.DistributedObjects;
 using Microsoft.Extensions.Logging;
-using Shared.Models;
+using QueueLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

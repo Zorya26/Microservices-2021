@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using QueueLogic;
+using QueueLogic.Models;
 
-namespace MessageService
+namespace MessageService1
 {
     public class Startup
     {
@@ -19,6 +22,16 @@ namespace MessageService
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var serviceClientSettingsConfig = Configuration.GetSection("RabbitMq");
+            services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+
+            var serviceProvider = services.BuildServiceProvider();
+            var logger = serviceProvider.GetService<ILogger<QueueListener>>();
+            services.AddSingleton(typeof(ILogger), logger);
+
+            services.AddHostedService<QueueListener>();
+
+            services.AddMemoryCache();
             services.AddControllers();
         }
 

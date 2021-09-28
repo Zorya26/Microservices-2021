@@ -1,7 +1,7 @@
 ﻿using LoggingService3.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Shared.Models;
+using QueueLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
