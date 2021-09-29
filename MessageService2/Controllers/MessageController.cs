@@ -10,21 +10,26 @@ namespace MessagesService2.Controllers
     public class MessageController : Controller
     {
         private readonly ILogger<MessageController> _logger;
+        private readonly IMemoryCache _cache;
 
-        public static Dictionary<Guid, string> messages = new Dictionary<Guid, string>();
+        Dictionary<Guid, string> messages = new Dictionary<Guid, string>();
 
-        public MessageController(ILogger<MessageController> logger)
+        public MessageController(ILogger<MessageController> logger, IMemoryCache memoryCache)
         {
             _logger = logger;
+            _cache = memoryCache;
         }
 
         [HttpGet]
         public string GetMessage()
         {
             var messagesCont = "";
-            foreach (var message in messages.Values)
+            if (_cache.TryGetValue("messages", out messages))
             {
-                messagesCont += message;
+                foreach (var message in messages.Values)
+                {
+                    messagesCont += message;
+                }
             }
 
             _logger.LogInformation("Message Controller 1: " + messagesCont);

@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using QueueLogic.Models;
+using RabbitMQ.Client;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using RabbitMQ.Client;
-using QueueLogic.Models;
 
 namespace QueueLogic
 {
@@ -36,10 +35,6 @@ namespace QueueLogic
                 using (var channel = _connection.CreateModel())
                 {
                     var args = new Dictionary<string, object>(1);
-                    //args.Add("x-max-length", 5);               //  task 3
-                    //args.Add("x-overflow", "drop-head");        //  task 3
-                    //args.Add("x-overflow", "reject-publish");   //  task 3
-                    //args.Add("x-message-ttl", 60000);           //  task 5
 
                     channel.QueueDeclare(queue: _queueName, durable: true, exclusive: false, autoDelete: false, arguments: args);
 
